@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	<html>
+<style>
+body{
+background-color: #000000;
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-position:right bottom;
+font-family: Bradley Hand ITC;
+font-size: 27px;
+}
+h1 {
+padding: 10px 15px;
+margin: 0px;
+font-size: 14px;
+background-color: #000000;
+//background-image: -moz-linear-gradient(100% 100% 90deg, #777, #999) !important;
+//background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999), to(#777)) !important;
+color: #FFF;
+//-webkit-border-radius:8px 8px 0px 0px;
+//-moz-border-radius: 8px 8px 0px 0px;
+border-radius: 8px 8px 0px 0px;
+text-shadow:1px 1px 2px #333333;
+opacity: 0.5;
+}
+table {
+width: 565px;
+}
+table tr td{
+font-family: verdana;
+font-size: 11px;
+padding: 10px 5px;
+border-bottom: solid 1px #CCC;
+
+}
+#wrapper{
+width: 800px;
+margin: 10px auto;
+text-align: left;
+background: url('https://images.wallpaperscraft.com/image/love_sign_drawing_pattern_70165_1366x768.jpg') no-repeat center center fixed ;
+}
+#console{
+height: 400px;
+overflow: auto;
+background-color: #000;
+padding: 15px;
+font-family: monospace;
+font-size: 12px;
+color: #FFF;
+}
+.content{
+padding: 15px;
+}
+#commander{
+border: solid 1px #CCC;
+padding: 5px 10px;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+margin: 5px;
+width: 590px;
+height: 30px;
+}
+.box{
+-moz-box-shadow: 1px 1px 8px #666;
+-webkit-box-shadow: 1px 1px 8px #666;
+box-shadow: 1px 1px 8px #40D5D2;
+border: solid 1px black;
+-webkit-border-radius: 8px 8px 0px 0px;
+-moz-border-radius: 8px 8px 0px 0px;
+border-radius: 8px 8px 0px 0px;
+margin: 15px 0px;
+background-color: #F5F5F5;
+opacity: 0.8;
+}
+#help{
+width: 300px;
+float: right;
+}
+.prefix{
+color: #0077E7;
+}
+.keyword{
+color: #9eff63;
+}
+.error{
+color: #FF0000;
+}
+.spacer{
+clear: both;
+display: block;
+}
+</style>
+
+<script>
+  alert ('Hai :)')
+	alert ('cuma butuh waktunya sedikit')
+	alert ('aku mau ungkapin perasaanku')
+	alert ('Ke kamu :)')
+	alert ('dibaca ya :)')
+	</script><br><br>
+
+<script type="text/javascript">
+
+TypingText = function(element, interval, cursor, finishedCallback) {
+if((typeof document.getElementById == "undefined") || (typeof
+
+element.innerHTML == "undefined")) {
+this.running = true;
+return;
+}
+this.element = element;
+this.finishedCallback = (finishedCallback ? finishedCallback : function() {
+
+return; });
+this.interval = (typeof interval == "undefined" ? 100 : interval);
+this.origText = this.element.innerHTML;
+this.unparsedOrigText = this.origText;
+this.cursor = (cursor ? cursor : "");
+this.currentText = "";
+this.currentChar = 0;
+this.element.typingText = this;
+if(this.element.id == "") this.element.id = "typingtext" +
+
+TypingText.currentIndex++;
+TypingText.all.push(this);
+this.running = false;
+this.inTag = false;
+this.tagBuffer = "";
+this.inHTMLEntity = false;
+this.HTMLEntityBuffer = "";
+}
+TypingText.all = new Array();
+TypingText.currentIndex = 0;
+TypingText.runAll = function() {
+for(var i = 0; i < TypingText.all.length; i++) TypingText.all[i].run();
+}
+TypingText.prototype.run = function() {
+if(this.running) return;
+if(typeof this.origText == "undefined") {
+setTimeout("document.getElementById('" + this.element.id +
+
+"').typingText.run()", this.interval);
+return;
+}
+if(this.currentText == "") this.element.innerHTML = "";
+if(this.currentChar < this.origText.length) {
+if(this.origText.charAt(this.currentChar) == "<" && !this.inTag) {
+this.tagBuffer = "<";
+this.inTag = true;
+this.currentChar++;
+this.run();
+return;
+} else if(this.origText.charAt(this.currentChar) == ">" && this.inTag) {
+this.tagBuffer += ">";
+this.inTag = false;
+this.currentText += this.tagBuffer;
+this.currentChar++;
+this.run();
+return;
+} else if(this.inTag) {
+this.tagBuffer += this.origText.charAt(this.currentChar);
+this.currentChar++;
+this.run();
+return;
+} else if(this.origText.charAt(this.currentChar) == "&" && !
+
+this.inHTMLEntity) {
+this.HTMLEntityBuffer = "&";
+this.inHTMLEntity = true;
+this.currentChar++;
+this.run();
+return;
+} else if(this.origText.charAt(this.currentChar) == ";" &&
+
+this.inHTMLEntity) {
+this.HTMLEntityBuffer += ";";
+this.inHTMLEntity = false;
+this.currentText += this.HTMLEntityBuffer;
+this.currentChar++;
+this.run();
+return;
+} else if(this.inHTMLEntity) {
+this.HTMLEntityBuffer += this.origText.charAt(this.currentChar);
+this.currentChar++;
+this.run();
+return;
+} else {
+this.currentText += this.origText.charAt(this.currentChar);
+}
+this.element.innerHTML = this.currentText;
+this.element.innerHTML += (this.currentChar < this.origText.length - 1 ?
+
+(typeof this.cursor == "function" ? this.cursor(this.currentText) : this.cursor) :
+
+"");
+this.currentChar++;
+setTimeout("document.getElementById('" + this.element.id +
+
+"').typingText.run()", this.interval);
+} else {
+this.currentText = "";
+this.currentChar = 0;
+this.running = false;
+this.finishedCallback();
+}
+}
+</script>
+
+
+<!-- AdFender script begin --><script type='text/javascript' src='http://local.adfender.com/adfender/elemhide.js'></script><!-- AdFender script end -->
+<!-- AdFender script begin --><script type='text/javascript' src='http://local.adfender.com/adfender/elemhide.js'></script><!-- AdFender script end -->
+</head>
+<body oncontextmenu='return false;' onkeydown='return false;' onmousedown='return false;' ondragstart='return false' onselectstart='return false' style='-moz-user-select: none; cursor: default;'>
+<div id="wrapper">
+<div class="box">
+<h1>Terminal</h1>
+<div id="console"><span class="prefix">
+<p id="message">
+<font color="yellow" size="5px">Buat Kamu Orang Yang aku pendam rasa dari kelas 7</font><br>
+<br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> WelCome <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Enter Username<br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> patrick.star198<br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Enter Password<br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> ************ <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Aku mau ngungkapin perasaan aku boleh? <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Bolehkan Natt? <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Aku jujur aku tuh suka sama kamu itu udah lama <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Dan aku juga mau nanya sesuatu ke kamu <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Kamu mau gk jadi pacar aku? <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Jujur aja gpp kalo kamu mau sih Alhamdulillah :) <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Kalo gak juga gpp kok :) <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Yang penting aku udah nyampein perasaan aku ke kamu :) <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> Terima Kasih Udah Baca Ya Natt <br>
+<font color="aqua" size="3.5px">Localhost@ Mr. S Cyber:~#</font><font color="white" size="3.5px"> BY <a href="https://facebook.com/patrick.star198"><font color="aqua" size="3.5px"> |+| Sancay IX D |+| </font></a>
+<br>
+<font color="lime" size="4px">Balesnya di whatsapp ya</font><br>
+<br>
+<font color="yellow">Copyright © 2018
+
+<script type="text/javascript">
+new TypingText(document.getElementById("message"),75, function(i){ var ar
+
+= new Array("|", "|", "|", "|"); return " " + ar[i.length % ar.length]; });
+
+//Type out examples:
+TypingText.runAll();
+
+</script>
+<input text="test" id="commander" onkeyup="execute(this,event);" disabled="disabled" style="width:786px;"/>
+</div>
+<div class="spacer"></div>
+
+<iframe width="300%" height="0" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/484106316&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+</body>
+</html>
